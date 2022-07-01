@@ -1,6 +1,6 @@
-package com.company;
+package Animal;
 
-public class Animal {
+public abstract class Animal {
     private String name;
     private int age;
     private int weight;
@@ -49,19 +49,19 @@ public class Animal {
         this.color = color;
     }
 
-    void say() {
+    public void say() {
         System.out.println("Я говорю!");
     }
 
-    void go() {
+    protected void go() {
         System.out.println("Я иду!");
     }
 
-    void drink() {
+    protected void drink() {
         System.out.println("Я пью!");
     }
 
-    void eat() {
+    protected void eat() {
         System.out.println("Я ем!");
     }
 
