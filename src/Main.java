@@ -17,24 +17,14 @@ public class Main {
 
         ArrayList<Animal> animalList = new ArrayList<>();
         showCommand();
-        //boolean flagToExit = true;
         while (true) {
             switch (Command.valueOf(reader.readLine().toUpperCase().trim())) {
                 case ADD -> {
                     System.out.println("Какое животное вы хотите добавить (cat/dog/duck)?");
                     switch (reader.readLine()) {
-                        case "cat" -> {
-                            Cat cat = new Cat();
-                            addAnimal(cat,animalList,reader);
-                        }
-                        case "dog" -> {
-                            Dog dog = new Dog();
-                            addAnimal(dog,animalList,reader);
-                        }
-                        case "duck" -> {
-                            Duck duck = new Duck();
-                            addAnimal(duck,animalList,reader);
-                        }
+                        case "cat" -> addAnimal(new Cat(), animalList, reader);
+                        case "dog" -> addAnimal(new Dog(), animalList, reader);
+                        case "duck" -> addAnimal(new Duck(), animalList, reader);
                         default -> System.out.println("Некорректное название животного!");
                     }
                 }
@@ -50,14 +40,14 @@ public class Main {
     }
 
     static void showCommand() {
+        System.out.println("-----------------------------------");
         System.out.println("Введите команду: ");
         System.out.println("add - добавить животное в список ");
         System.out.println("list - вывести список животных ");
         System.out.println("exit - выйти из программы ");
     }
 
-    static  void addAnimal(Animal animal,ArrayList animalList, BufferedReader reader) throws IOException {
-
+    static void informationInput(Animal animal, BufferedReader reader) throws IOException {
         System.out.println("Укажите имя: ");
         animal.setName(reader.readLine());
         System.out.println("Укажите возраст: ");
@@ -66,6 +56,10 @@ public class Main {
         animal.setWeight(Integer.parseInt(reader.readLine()));
         System.out.println("Укажите цвет: ");
         animal.setColor(reader.readLine());
+    }
+
+    static void addAnimal(Animal animal, ArrayList<Animal> animalList, BufferedReader reader) throws IOException {
+        informationInput(animal, reader);
         animalList.add(animal);
         animal.say();
         showCommand();

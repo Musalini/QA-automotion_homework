@@ -1,5 +1,8 @@
 package Animal;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+
 public abstract class Animal {
     private String name;
     private int age;
@@ -19,9 +22,9 @@ public abstract class Animal {
     }
 
     public String showAgeInfo(int age) {
-        if (age == 1)
+        if (age % 10 == 1)
             return ", мне " + age + " год";
-        else if (age > 1 && age < 5)
+        else if (age % 10 == 2 || age % 10 == 3 || age % 10 == 4)
             return ", мне " + age + " года";
         else
             return ", мне " + age + " лет";

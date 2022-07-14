@@ -1,2 +1,4 @@
 # Project exclude paths
-/out/
+.idea
+.Otus_Homework.iml
+.out
